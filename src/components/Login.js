@@ -13,10 +13,14 @@ const Login =()=>{
             </div>
             <form className="absolute w-3/12 p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-80">
                 <h1 className="font-bold text-3xl py-4">{isSignInForm ? "Sign in": "Sign out"}</h1>
+                {! isSignInForm && (
+                    <input type ="text" placeholder="Full Name" className="p-2 m-2 w-full bg-gray-800"></input>
+                )}
                 <input type ="text" placeholder="Email or phone number" className="p-2 m-2 w-full bg-gray-800"></input>
+
                 <input type ="password" placeholder="Password" className="p-2 m-2 w-full bg-gray-800"></input>            
                 <button className="p-2 m-2 bg-red-700 w-full rounded-lg">{isSignInForm ? "Sign in": "Sign out"}</button>
-            <p className="py-4"onClick={toggleSignForm}>New to Netflix? Sign up Now</p>
+            <p className="py-4 cursor-pointer"onClick={toggleSignForm}>{isSignInForm ? "New to Netflix? Sign up Now": "Already registered?Sign in Now"}</p>
             </form>
         </div>
     )
