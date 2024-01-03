@@ -15,6 +15,12 @@ const Login =()=>
     {
         const message=checkValidData(email.current.value,password.current.value);
         seterrorMessage(message);
+        if (message)
+        {
+            return ;
+        }
+
+        
 
     }
     return (
