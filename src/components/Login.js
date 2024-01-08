@@ -5,11 +5,14 @@ import {createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "fireba
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import {updateProfile } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 const Login =()=>
 {
     const[isSignInForm,setisSignInForm] = useState(true);
     const [errorMessage,seterrorMessage] = useState(null);
     const navigate=useNavigate();
+    const dispatch= useDispatch();
 
     const toggleSignForm=()=>{
            setisSignInForm(!isSignInForm); 
@@ -30,10 +33,13 @@ const Login =()=>
               // Signed up 
               const user = userCredential.user;
               updateProfile(user, {
-                displayName: email.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+                displayName: email.current.value, 
+                photoURL: "https://occ-0-3752-3647.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABbLVAuGs_FKN1bYYe0Dp9Lw80ZHvI_FCA3OQhGwcRJPEbPRdCoxqCpDJvcHXwP7Q0or42Kz5CfWTjgsDX9Paf0O5NLHBA4M.png?r=f6a"
               }).then(() => {
                 // Profile updated!
                 // ...
+                const {uid,email,displayName}=auth.currentUser;
+                dispatch(addUser({uid:uid,email:email,displayName:displayName}));
                 navigate("/browse");
               }).catch((error) => {
                 // An error occurred
