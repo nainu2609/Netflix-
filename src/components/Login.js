@@ -11,7 +11,7 @@ const Login =()=>
 {
     const[isSignInForm,setisSignInForm] = useState(true);
     const [errorMessage,seterrorMessage] = useState(null);
-    const navigate=useNavigate();
+  
     const dispatch= useDispatch();
 
     const toggleSignForm=()=>{
@@ -40,7 +40,7 @@ const Login =()=>
                 // ...
                 const {uid,email,displayName}=auth.currentUser;
                 dispatch(addUser({uid:uid,email:email,displayName:displayName}));
-                navigate("/browse");
+               
               }).catch((error) => {
                 // An error occurred
                 // ...
@@ -62,7 +62,7 @@ const Login =()=>
             .then((userCredential) => {
               // Signed in 
               const user = userCredential.user;
-              navigate("/browse");
+              
               // ...
             })
             .catch((error) => {
