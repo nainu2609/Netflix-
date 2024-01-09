@@ -37,6 +37,7 @@ const Body =()=>{
     },[]);
     return (
         <div>
+            console.log(<RouterProvider router ={appRouter}/> );
             <RouterProvider router ={appRouter}/> 
         </div>
     )
