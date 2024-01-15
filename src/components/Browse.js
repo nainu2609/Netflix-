@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import Header from "./Header";
-import {API_options} from "../utils/constants";
-const Browse=()=>{
 
+import Header from "./Header";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+const Browse=()=>{
+    useNowPlayingMovies();
     return (
         <div>
             <Header/>
